@@ -1,7 +1,9 @@
 import { Fragment } from "react";
 
 const getTicketsList = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    next: { revalidate: 300 },
+  });
   return res.json();
 };
 const TicketsList = async () => {
@@ -19,6 +21,7 @@ const TicketsList = async () => {
           </div>
         )
       )}
+      {posts.lenght === 0 && <p>No open tickets </p>}
     </Fragment>
   );
 };

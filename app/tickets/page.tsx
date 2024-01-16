@@ -6,7 +6,7 @@ function Tickets() {
       <nav>
         <h2>Tickets</h2>
         <p>
-          <small>Currently open tickets</small>
+          <small className="text-center">Currently open tickets</small>
         </p>
       </nav>
       <TicketsList />
