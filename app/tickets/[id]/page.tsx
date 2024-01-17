@@ -4,7 +4,7 @@
 //   };
 // }
 //react-query
-export async function generateStaticParams() {
+async function generateStaticParams() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
     next: { revalidate: 0 },
   });
