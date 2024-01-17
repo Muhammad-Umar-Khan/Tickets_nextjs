@@ -13,15 +13,15 @@ const TicketsList = async () => {
     <Fragment>
       {posts.map(
         (post: { userId: number; id: number; title: string; body: string }) => (
-          <Link key={post.id} href={`http://localhost:3000/tickets/${post.id}`}>
-            <div className="card my-5">
+          <div key={post.id} className="card my-5">
+            <Link href={`http://localhost:3000/tickets/${post.id}`}>
               <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              <div className="pill low">
-                <p>Low priority</p>
-              </div>
+            </Link>
+            <p>{post.body}</p>
+            <div className="pill low">
+              <p>Low priority</p>
             </div>
-          </Link>
+          </div>
         )
       )}
       {posts.lenght === 0 && <p>No open tickets </p>}

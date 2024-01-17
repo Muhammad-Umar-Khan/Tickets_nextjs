@@ -4,6 +4,13 @@
 //   };
 // }
 //react-query
+export async function generateStaticParams() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    next: { revalidate: 0 },
+  });
+  const posts = await res.json();
+  return posts.map((post: { id: string }) => ({ id: post.id.toString() }));
+}
 const getPostById = async (p_id: number) => {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${p_id}`,
