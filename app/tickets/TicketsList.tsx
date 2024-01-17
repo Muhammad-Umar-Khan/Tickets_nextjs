@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Fragment } from "react";
 
 const getTicketsList = async () => {
@@ -12,13 +13,15 @@ const TicketsList = async () => {
     <Fragment>
       {posts.map(
         (post: { userId: number; id: number; title: string; body: string }) => (
-          <div key={post.id} className="card my-5">
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-            <div className="pill low">
-              <p>Low priority</p>
+          <Link key={post.id} href={`http://localhost:3000/tickets/${post.id}`}>
+            <div className="card my-5">
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+              <div className="pill low">
+                <p>Low priority</p>
+              </div>
             </div>
-          </div>
+          </Link>
         )
       )}
       {posts.lenght === 0 && <p>No open tickets </p>}
